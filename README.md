@@ -13,16 +13,16 @@ This app provides the following features :
 - View collections in a date range
 
 # Add customer
-![Example Output](./images/Add_Customer.JPG)
+![Example Output](./Images/Add_Customer.JPG)
 
 # Add amount
-![Example Output](./images/Add_AmountCollected.JPG)
+![Example Output](./Images/Add_AmountCollected.JPG)
 
 # Check Details
-![Example Output](./images/Check_details.JPG)
+![Example Output](./Images/Check_details.JPG)
 
 # Daily Report
-![Example Output](./images/Daily_Report.JPG)
+![Example Output](./Images/Daily_Report.JPG)
 
 # Mail data
-![Example Output](./images/Mail_data.JPG)
+![Example Output](./Images/Mail_data.JPG)
