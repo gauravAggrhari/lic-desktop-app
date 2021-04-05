@@ -11,3 +11,18 @@ This app provides the following features :
 - Subtract collections.
 - Automatic backup of your client's data every 90 days.
 - View collections in a date range
+
+# Add customer
+![Example Output](./images/Add_Customer.JPG)
+
+# Add amount
+![Example Output](./images/Add_AmountCollected.JPG)
+
+# Check Details
+![Example Output](./images/Check_details.JPG)
+
+# Daily Report
+![Example Output](./images/Daily_Report.JPG)
+
+# Mail data
+![Example Output](./images/Mail_data.JPG)
