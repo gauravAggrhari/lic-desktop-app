@@ -13,9 +13,8 @@ from Mail import mail
 class excel(object):
     def __init__(self):
         # providing filename of excel with full path
-        #hostname must be replaces with actual hostname.
-        os.makedirs("C:/Users/hostaname/Documents/LIC", exist_ok=True)
-        self.filename = "C:/Users/hostname/Documents/LIC/Client Details.xlsx"
+        os.makedirs("C:/Users/AJAY LIC/Documents/LIC", exist_ok=True)
+        self.filename = "C:/Users/AJAY LIC/Documents/LIC/Client Details.xlsx"
         # check for file, workbook and worksheet existence
         if os.path.isfile(self.filename):
             self.wb = load_workbook(self.filename)
@@ -238,19 +237,64 @@ class excel(object):
                 del match[:]
 
             return data
-
+        
         else:
             return "No Customer details available with the given data"
 
     def backup(self):
-        #replace hostname with your actual hostname
-        #we'll make it dynamic in future
-        os.makedirs("C:/Users/hostname/Documents/Backup", exist_ok=True)
-        file = "C:/Users/hostname/Documents/Backup/Backup_"+str(datetime.datetime.now().strftime("%d_%m_%Y")+".xlsx")
+        os.makedirs("C:/Users/AJAY LIC/Documents/Backup", exist_ok=True)
+        file = "C:/Users/AJAY LIC/Documents/Backup/Backup_"+str(datetime.datetime.now().strftime("%d_%m_%Y")+".xlsx")
         shutil.copyfile(self.filename, file)
 
     def quarterly(self):
-        self.toaddr = "emailadress@domain.com"
+        '''
+        head_13 = self.ws.cell(row=1, column=13)
+        self.toaddr = "gauavaggrahari@@gmail.com"
+        try:
+            head_split = head_13.value.split("/")
+            if int(head_split[0][:1]) == 0:
+                if int(head_split[1][:1]) == 0:
+                    self.quarter = datetime.datetime(year=int(head_split[2]), month=int(head_split[1][1:]), day=int(head_split[0][1:])) + relativedelta(months=+3, days=+1)
+                    #self.quarter = datetime.datetime.now()
+                    if self.quarter.strftime("%d/%m/%Y") <= self.date:
+                        flag = mail(self.toaddr)
+                        if flag == 1:
+                            self.ws.delete_cols(13, self.ws.max_column-13)
+                        else:
+                            self.backup()
+                            self.ws.delete_cols(13, self.ws.max_column - 13)
+                else:
+                    self.quarter = datetime.datetime(year=int(head_split[2]), month=int(head_split[1]), day=int(head_split[0][1:])) + relativedelta(months=+3, days=+1)
+                    if self.quarter.strftime("%d/%m/%Y") <= self.date:
+                        flag = mail(self.toaddr)
+                        if flag == 1:
+                            self.ws.delete_cols(13, self.ws.max_column - 13)
+                        else:
+                            self.backup()
+                            self.ws.delete_cols(13, self.ws.max_column - 13)
+            else:
+                if int(head_split[1][:1]) == 0:
+                    self.quarter = datetime.datetime(year=int(head_split[2]), month=int(head_split[1][1:]), day=int(head_split[0])) + relativedelta(months=+3, days=+1)
+                    #self.quarter = datetime.datetime.now()
+                    if self.quarter.strftime("%d/%m/%Y") <= self.date:
+                        flag = mail(self.toaddr)
+                        if flag == 1:
+                            self.ws.delete_cols(13, self.ws.max_column - 13)
+                        else:
+                            self.backup()
+                            self.ws.delete_cols(13, self.ws.max_column - 13)
+                else:
+                    self.quarter = datetime.datetime(year=int(head_split[2]), month=int(head_split[1]), day=int(head_split[0])) + relativedelta(months=+3, days=+1)
+                    if self.quarter.strftime("%d/%m/%Y") <= self.date:
+                        flag = mail(self.toaddr)
+                        if flag == 1:
+                            self.ws.delete_cols(13, self.ws.max_column - 13)
+                        else:
+                            self.backup()
+                            self.ws.delete_cols(13, self.ws.max_column - 13)
+           
+        '''
+        self.toaddr = "ajay66728@gmail.com"
         #should be -2 because we are calling quarterly at first
         if (self.ws.max_column >= 102):
             flag = mail(self.toaddr)
@@ -310,7 +354,7 @@ class excel(object):
                 except TypeError:
                     total = total + 0
                 report.update({head_obj.value: cell_obj.value})
-            self.report_filename = "C:/Users/hostaname/Documents/LIC/Report.xlsx"
+            self.report_filename = "C:/Users/AJAY LIC/Documents/LIC/Report.xlsx"
             book = Workbook()
             sheet = book.create_sheet(index=0, title=name.value)
             head = ['Date', 'Collection']
@@ -327,7 +371,8 @@ class excel(object):
             return "No Customer report available with the given data"
 
     def open_report(self):
-        os.startfile('C:/Users/hostname/Documents/LIC/Report.xlsx')
+        #os.system("start C:/Users/AJAY LIC/Documents/LIC/Report.xlsx")
+        os.startfile('C:/Users/AJAY LIC/Documents/LIC/Report.xlsx')
 
     def read_entries(self, row):
         row = row + 1
@@ -467,7 +512,7 @@ class excel(object):
             self.ws.cell(row=row_no, column=12).value = balance
         # updating the new column and corresponding entry row with today's daily collection
         self.ws.cell(row=row_no, column=column).value = updated_daily_collection
-
+        
         # calling quarterly to check for 90 days and do a clean up of daily collection columns
         #self.quarterly()
         self.wb.save(self.filename)
@@ -494,3 +539,4 @@ class excel(object):
         # updating the new column and corresponding entry row with today's daily collection
         self.ws.cell(row=row_no, column=column).value = daily_collection_update
         self.wb.save(self.filename)
+

@@ -10,7 +10,7 @@ flag = 0
 def mail(email_to):
     global flag
     try:
-        fromaddr = "emailadress@domain.com"
+        fromaddr = "ajdailycollection@gmail.com"
         toaddr = email_to
 
         # instance of MIMEMultipart
@@ -33,7 +33,7 @@ def mail(email_to):
 
         # open the file to be sent
         filename = "Client Details.xlsx"
-        attachment = open("filepath", "rb")
+        attachment = open("C:/Users/AJAY LIC/Documents/LIC/Client Details.xlsx", "rb")
 
         # instance of MIMEBase and named as p
         p = MIMEBase('application', 'octet-stream')
@@ -56,8 +56,7 @@ def mail(email_to):
         s.starttls()
 
         # Authentication
-        #replace password with your from-email-password
-        s.login(fromaddr, "password")
+        s.login(fromaddr, "daily@collection2122")
 
         # Converts the Multipart msg into a string
         text = msg.as_string()

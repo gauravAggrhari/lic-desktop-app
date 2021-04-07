@@ -52,7 +52,7 @@ class Client():
 
     def add_customer_blank(self):
         global tk_var, choices
-        self.clear_frame()
+        self.clear_frame() 
         self.destroy_on_reset()
         self.window = Frame(right_frame, height=500, width=500, borderwidth=2, relief=SOLID)
         self.window.grid(row=0, column=0, sticky=NE)
@@ -562,7 +562,7 @@ class Client():
         Label(backup_top_frame, text="Enter E-Mail Address", font=(None, 10)).grid(row=1, column=0)
         self.email = Entry(backup_top_frame)
         self.email.grid(row=1, column=1)
-        self.email.insert(0, "emailaddress@domin.com")
+        self.email.insert(0, "ajay66728@gmail.com")
         Button(backup_top_frame, text="Submit", command=self.backup_mail, height=1, width=15,
                font=(None, 10), relief=RAISED).grid(row=2, column=1)
 
@@ -821,7 +821,7 @@ class Client():
         except Exception as e:
             pass
             #print(e)
-
+        
         try:
             self.Address_Label
             self.Address_Label.destroy()
@@ -829,35 +829,35 @@ class Client():
         except Exception as e:
             pass
             #print(e)
-
+		
         try:
             self.Mobile_Label
             self.Mobile_Label.destroy()
             del self.Mobile_Label
         except Exception as e:
             pass#print(e)
-
+		 
         try:
             self.Policy_Label
             self.Policy_Label.destroy()
             del self.Policy_Label
         except Exception as e:
             pass#print(e)
-
+		 
         try:
             self.Period_Label
             self.Period_Label.destroy()
             del self.Period_Label
         except Exception as e:
             pass#print(e)
-
+		 
         try:
             self.Premium_Label
             self.Premium_Label.destroy()
             del self.Premium_Label
         except Exception as e:
             pass#print(e)
-
+		 
         try:
             self.Daily_Collection_Label
             self.Daily_Collection_Label.destroy()
